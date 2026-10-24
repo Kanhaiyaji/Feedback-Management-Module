@@ -1,0 +1,40 @@
+@model FeedbackManagement.Models.Feedback
+@{ ViewBag.Title = "Submit Feedback"; }
+<h1>Submit Feedback</h1>
+<p>Share your learning experience. All fields are required.</p>
+@using (Html.BeginForm("Create", "Feedback", FormMethod.Post,
+    new { @class = "panel" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(false, "Please correct the following errors:")
+    <div class="field">
+        @Html.LabelFor(m => m.StudentName)
+        @Html.TextBoxFor(m => m.StudentName, new { maxlength = 60 })
+        @Html.ValidationMessageFor(m => m.StudentName)
+    </div>
+    <div class="field">
+        @Html.LabelFor(m => m.Email)
+        @Html.TextBoxFor(m => m.Email, new { maxlength = 100 })
+        @Html.ValidationMessageFor(m => m.Email)
+    </div>
+    <div class="field">
+        @Html.LabelFor(m => m.Subject)
+        @Html.TextBoxFor(m => m.Subject, new { maxlength = 80 })
+        @Html.ValidationMessageFor(m => m.Subject)
+    </div>
+    <div class="field">
+        @Html.LabelFor(m => m.Rating)
+        @Html.DropDownListFor(m => m.Rating,
+            Enumerable.Range(1, 5).Select(n => new SelectListItem
+            { Value = n.ToString(), Text = n + " / 5" }), "Select rating")
+        @Html.ValidationMessageFor(m => m.Rating)
+    </div>
+    <div class="field">
+        @Html.LabelFor(m => m.Comments)
+        @Html.TextAreaFor(m => m.Comments,
+            new { rows = 3, maxlength = 500 })
+        @Html.ValidationMessageFor(m => m.Comments)
+    </div>
+    <button type="submit">Submit Feedback</button>
+    @Html.ActionLink("View Feedback", "Index", null, new { @class = "secondary" })
+}

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewBag.Title - Feedback Management</title>
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" />
+</head>
+<body>
+    <header><div class="wrap nav">
+        <strong>Feedback Management</strong>
+        <nav>@Html.ActionLink("All Feedback", "Index", "Feedback")
+        @Html.ActionLink("Submit Feedback", "Create", "Feedback")</nav>
+    </div></header>
+    <main class="wrap">@RenderBody()</main>
+    <footer class="wrap">Practical 7 | ASP.NET MVC Layout, Partial View &amp; Validation<br />
+        AYUSH SHARMA | 92400103460 | 5EC1 | Batch A</footer>
+</body>
+</html>

@@ -1,0 +1,9 @@
+@model FeedbackManagement.Models.Feedback
+<article class="panel card">
+    <div class="heading"><h2>@Model.Subject</h2>
+        <strong class="rating">Rating: @Model.Rating / 5</strong></div>
+    <p>@Model.Comments</p>
+    <p class="muted">@Model.StudentName | @Model.Email</p>
+    <small>Feedback #@Model.Id |
+        @Model.SubmittedAt.ToString("dd MMM yyyy, hh:mm tt")</small>
+</article>

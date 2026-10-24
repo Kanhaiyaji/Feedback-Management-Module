@@ -1,0 +1,18 @@
+@model List<FeedbackManagement.Models.Feedback>
+@{ ViewBag.Title = "All Feedback"; }
+<div class="heading"><div><h1>All Feedback</h1>
+<p>Review the feedback submitted in this browser session.</p></div>
+@Html.ActionLink("+ Submit Feedback", "Create", null,
+    new { @class = "button" })</div>
+@if (TempData["Success"] != null)
+{ <div class="success">@TempData["Success"]</div> }
+<p><strong>Total Feedback: @Model.Count</strong></p>
+@if (Model.Count == 0)
+{ <div class="panel">No feedback yet. Submit your first feedback.</div> }
+else
+{
+    foreach (var feedback in Model)
+    {
+        @Html.Partial("_FeedbackCard", feedback)
+    }
+}
